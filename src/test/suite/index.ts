@@ -1,10 +1,10 @@
 import * as path from 'path';
-import * as Mocha from 'mocha';
+import * as mocha from 'mocha';
 import * as glob from 'glob';
 
 export function run(): Promise<void> {
 	// Create the mocha test
-	const mocha = new Mocha({
+	const testRunner = new mocha({
 		ui: 'tdd',
 		color: true
 	});
@@ -16,7 +16,7 @@ export function run(): Promise<void> {
 		const testFileStream = testFiles.stream();
 
 		testFileStream.on("data", (file) => {
-			mocha.addFile(path.resolve(testsRoot, file));
+			testRunner.addFile(path.resolve(testsRoot, file));
 		});
 		testFileStream.on("error", (err) => {
 			e(err);
@@ -24,7 +24,7 @@ export function run(): Promise<void> {
 		testFileStream.on("end", () => {
 			try {
 				// Run the mocha test
-				mocha.run(failures => {
+				testRunner.run(failures => {
 					if (failures > 0) {
 						e(new Error(`${failures} tests failed.`));
 					} else {
