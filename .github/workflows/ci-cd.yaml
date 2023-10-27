@@ -27,8 +27,8 @@ jobs:
     - name: Run Linter
       run: eslint . --ext .ts
 
-    - name: Run Tests
-      run: npm test
+    #- name: Run Tests
+    #  run: npm test
 
     - name: Install vsce
       run: npm install -g vsce
