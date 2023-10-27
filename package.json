@@ -3,6 +3,10 @@
   "displayName": "base64-copy",
   "description": "Copy-paste to and from base64-encoded strings",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Polite-Code/text-encoding-conversion-vscode.git"
+    },
   "engines": {
     "vscode": "^1.83.0"
   },
